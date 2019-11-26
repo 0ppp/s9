@@ -1,0 +1,29 @@
+>mongo
+>show dbs
+>use trans
+>
+db.transaction.insert({itemName:"toy",customerName:"john",paymentmode:"debitcard",payment:8000})
+
+>
+db.transaction.insert({itemName:"car",customerName:"john",paymentmode:"creditcard",payment:4000})
+
+>
+db.transaction.insert({itemName:"bag",customerName:"mukesh",paymentmode:"cash",payment:5000})
+
+>
+db.transaction.insert({itemName:"airlineticket",customerName:"rohit",paymentmode:"cash",payment:50090})
+
+>
+db.transaction.insert({itemName:"mango",customerName:"abhijeet",paymentmode:"creditcard",payment:8000})
+
+
+
+db.transaction.insert({itemName:"bus",customerName:"manasi",paymentmode:"debitcard",payment:7000})
+
+4)
+a) > db.transaction.find({customerName:"john"})
+b) > db.transaction.find({paymentmode:"debitcard"})
+c) >
+db.transaction.aggregate([{$match:{"paymentmode":"creditcard"}},{$group:{_id:null,"count":{"$sum":"$payment"}}}])
+d) >
+db.transaction.aggregate([{$group:{_id:"$paymentmode","count":{"$sum":"$payment"}}}])
